@@ -23,6 +23,26 @@ O sistema classificará chamados de suporte em uma das categorias:
 - Python Dotenv
 - Git e GitHub
 
+## Sprint 1 — Avaliação básica de respostas
+
+Nesta sprint, foram implementadas regras determinísticas para avaliar respostas geradas por LLMs.
+
+### Validações implementadas
+
+- Verificação de resposta não vazia;
+- rejeição de respostas contendo apenas espaços;
+- validação de tamanho mínimo;
+- rejeição de respostas abaixo do tamanho esperado.
+
+### Testes automatizados
+
+Foram adicionados 6 testes unitários para a classe `ResponseEvaluator`.
+
+Resultado da execução completa:
+
+```text
+13 passed
+
 ## Estrutura inicial
 
 ```text
@@ -36,3 +56,4 @@ qa-llm-evaluation-framework/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
+
