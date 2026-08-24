@@ -1,4 +1,4 @@
-# QA LLM Evaluation Framework
+# QA LLM Evolution Framework
 
 Framework de testes automatizados para avaliar qualidade, segurança, confiabilidade e desempenho de aplicações baseadas em Large Language Models (LLMs).
 
@@ -25,7 +25,7 @@ O sistema classificará chamados de suporte em uma das categorias:
 
 ## Sprint 1 — Avaliação básica de respostas
 
-Nesta sprint, foram implementadas regras determinísticas para avaliar respostas geradas por LLMs.
+Nesta sprint, foram implementadas regras determinísticas iniciais para avaliar respostas geradas por LLMs.
 
 ### Validações implementadas
 
@@ -38,22 +38,70 @@ Nesta sprint, foram implementadas regras determinísticas para avaliar respostas
 
 Foram adicionados 6 testes unitários para a classe `ResponseEvaluator`.
 
-Resultado da execução completa:
+Resultado da execução completa da Sprint 1:
 
 ```text
 13 passed
+```
 
-## Estrutura inicial
+## Sprint 2 — Evolução do avaliador
+
+Nesta sprint, o `ResponseEvaluator` foi evoluído com novas regras configuráveis e uma avaliação consolidada da resposta.
+
+### Validações implementadas
+
+- identificação de padrões proibidos;
+- comparação de padrões sem diferenciar maiúsculas e minúsculas;
+- rejeição de resposta vazia na validação de padrões;
+- validação de tamanho máximo configurável;
+- rejeição de respostas acima do limite;
+- avaliação consolidada de todos os critérios;
+- resultado individual de cada validação;
+- decisão final por meio do campo `is_valid`.
+
+### Métodos disponíveis
+
+- `is_not_empty()`;
+- `has_minimum_length()`;
+- `has_maximum_length()`;
+- `is_free_of_forbidden_patterns()`;
+- `evaluate()`.
+
+### Testes automatizados
+
+Foram adicionados 10 novos testes unitários na Sprint 2:
+
+- 4 testes para padrões proibidos;
+- 3 testes para tamanho máximo;
+- 3 testes para avaliação consolidada.
+
+Resultado da execução completa:
 
 ```text
-qa-llm-evaluation-framework/
+23 passed
+```
+
+## Executando os testes
+
+Com o ambiente virtual ativado, execute:
+
+```bash
+python -m pytest tests -v
+```
+
+## Estrutura atual
+
+```text
+qa-llm-evolution-framework/
 ├── data/
 ├── prompts/
 ├── src/
+│   ├── response_evaluator.py
 │   └── response_validator.py
 ├── tests/
+│   ├── test_response_evaluator.py
 │   └── test_response_validator.py
 ├── .gitignore
 ├── README.md
 └── requirements.txt
-
+```
