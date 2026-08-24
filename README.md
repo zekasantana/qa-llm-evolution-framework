@@ -81,6 +81,42 @@ Resultado da execução completa:
 23 passed
 ```
 
+## Sprint 3 — Integração inicial com API de LLM
+
+Nesta sprint, foi criada a primeira camada de integração do framework com uma API real de LLM utilizando o SDK oficial da OpenAI e a Responses API.
+
+### Implementações
+
+- criação da classe `LLMClient`;
+- carregamento seguro das configurações com `python-dotenv`;
+- leitura da chave por meio da variável `OPENAI_API_KEY`;
+- configuração do modelo pela variável `OPENAI_MODEL`;
+- uso do modelo `gpt-5-mini` como padrão;
+- validação de chave de API ausente;
+- validação de prompts vazios;
+- normalização do prompt e da resposta;
+- suporte à injeção de cliente para testes com mocks;
+- criação do arquivo `.env.example` sem dados sensíveis.
+
+### Testes automatizados
+
+Foram adicionados 7 casos de teste para validar:
+
+- geração de resposta com cliente mockado;
+- modelo e prompt enviados para a API;
+- rejeição de prompt vazio;
+- rejeição de prompt contendo apenas espaços;
+- rejeição de prompt contendo apenas caracteres de controle;
+- ausência da variável `OPENAI_API_KEY`;
+- utilização do modelo configurado e do modelo padrão.
+
+Os testes utilizam mocks e não realizam chamadas reais à API, evitando consumo de créditos durante a execução da suíte.
+
+### Resultado
+
+```text
+30 passed
+
 ## Executando os testes
 
 Com o ambiente virtual ativado, execute:
