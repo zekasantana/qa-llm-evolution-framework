@@ -1,0 +1,34 @@
+[
+  {
+    "input": "Meu computador não está ligando.",
+    "expected_category": "HARDWARE"
+  },
+  {
+    "input": "O teclado parou de funcionar.",
+    "expected_category": "HARDWARE"
+  },
+  {
+    "input": "O sistema fecha sozinho quando tento abrir.",
+    "expected_category": "SOFTWARE"
+  },
+  {
+    "input": "O aplicativo apresenta erro durante a instalação.",
+    "expected_category": "SOFTWARE"
+  },
+  {
+    "input": "Minha senha foi bloqueada.",
+    "expected_category": "ACESSO"
+  },
+  {
+    "input": "Não consigo entrar na minha conta.",
+    "expected_category": "ACESSO"
+  },
+  {
+    "input": "Preciso atualizar meus dados cadastrais.",
+    "expected_category": "OUTROS"
+  },
+  {
+    "input": "Gostaria de saber o horário de atendimento.",
+    "expected_category": "OUTROS"
+  }
+]

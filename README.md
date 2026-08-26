@@ -116,6 +116,50 @@ Os testes utilizam mocks e não realizam chamadas reais à API, evitando consumo
 
 ```text
 30 passed
+```
+
+## Sprint 4 — Evolução com datasets
+
+Nesta sprint, foi implementada a avaliação baseada em datasets para permitir a execução de múltiplos cenários de classificação e o cálculo da acurácia das respostas.
+
+### Implementações
+
+- criação de um dataset no formato JSON;
+- inclusão de 8 chamados de suporte;
+- distribuição dos chamados entre as categorias `HARDWARE`, `SOFTWARE`, `ACESSO` e `OUTROS`;
+- criação da função `load_dataset()` para carregamento dos registros;
+- validação da estrutura e do conteúdo do dataset;
+- criação da função `calculate_accuracy()`;
+- comparação entre categorias esperadas e previstas;
+- cálculo percentual da acurácia;
+- rejeição de listas vazias;
+- rejeição de listas com tamanhos diferentes.
+
+### Testes automatizados
+
+Foram adicionados 10 novos testes:
+
+- 5 testes para o carregamento e a validação do dataset;
+- 5 testes para o cálculo de acurácia.
+
+Os testes validam:
+
+- retorno do dataset como lista;
+- quantidade de registros;
+- presença dos campos obrigatórios;
+- entradas não vazias;
+- utilização exclusiva das categorias permitidas;
+- acurácia de 100%;
+- acurácia de 50%;
+- acurácia de 0%;
+- rejeição de dados vazios;
+- rejeição de listas com tamanhos diferentes.
+
+### Resultado
+
+```text
+40 passed
+```
 
 ## Executando os testes
 
@@ -130,13 +174,21 @@ python -m pytest tests -v
 ```text
 qa-llm-evolution-framework/
 ├── data/
+│   └── support_tickets.json
 ├── prompts/
 ├── src/
+│   ├── dataset_evaluator.py
+│   ├── dataset_loader.py
+│   ├── llm_client.py
 │   ├── response_evaluator.py
 │   └── response_validator.py
 ├── tests/
+│   ├── test_dataset_evaluator.py
+│   ├── test_dataset_loader.py
+│   ├── test_llm_client.py
 │   ├── test_response_evaluator.py
 │   └── test_response_validator.py
+├── .env.example
 ├── .gitignore
 ├── README.md
 └── requirements.txt
